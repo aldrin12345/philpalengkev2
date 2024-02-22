@@ -1,0 +1,137 @@
+CREATE TABLE products_tbl (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    category_id INT UNSIGNED,
+    supplier_id INT UNSIGNED,
+    store_id INT UNSIGNED,
+    ownerUserId INT UNSIGNED,
+    name VARCHAR(255),
+    slug VARCHAR(255),
+    sku VARCHAR(255),
+    price DECIMAL(10,2),
+    stocks DOUBLE,
+    description TEXT,
+    urlOne VARCHAR(255),
+    urlTwo VARCHAR(255),
+    INDEX idx_name (name),
+    INDEX idx_slug (slug)
+);
+
+
+CREATE TABLE productimages_tbl(
+id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+filename VARCHAR(255),
+productId BIGINT UNSIGNED
+);
+
+CREATE TABLE specsimages_tbl(
+id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+filename VARCHAR(255),
+productId BIGINT UNSIGNED
+);
+
+CREATE TABLE storeimages_tbl(
+id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+filename VARCHAR(255),
+storeId BIGINT UNSIGNED
+);
+
+CREATE TABLE userimages_tbl(
+id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+filename VARCHAR(255),
+userId BIGINT UNSIGNED
+);
+
+CREATE TABLE categories_tbl(
+id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(255)
+);
+
+CREATE TABLE stores_tbl(
+id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+storeName VARCHAR(255),
+address VARCHAR(255),
+contactInfo VARCHAR(255),
+description TEXT,
+geoLocation VARCHAR(255),
+ownerUserId INT UNSIGNED
+);
+
+CREATE TABLE customers_tbl(
+id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(255),
+contactInfo VARCHAR(255),
+address VARCHAR(255),
+description TEXT
+);
+
+CREATE TABLE suppliers_tbl(
+id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(255),
+contactInfo VARCHAR(255),
+address VARCHAR(255),
+description TEXT
+);
+
+CREATE TABLE posgroup_tble(
+id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+cashierUserId INT UNSIGNED,
+customer_id BIGINT UNSIGNED,
+referenceNum VARCHAR(255),
+overallTotal DECIMAL(10,2)
+);
+
+CREATE TABLE possingle_tbl(
+id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+productId BIGINT UNSIGNED,
+price DECIMAL(10,2),
+quantity INT,
+total DECIMAL(10,2),
+posGroupId BIGINT UNSIGNED
+);
+
+CREATE TABLE salesreturn_tbl(
+id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+productId BIGINT UNSIGNED,
+customerId BIGINT UNSIGNED,
+cashierUserId INT UNSIGNED
+);
+
+CREATE TABLE roles_tbl(
+id TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+userId INT UNSIGNED
+);
+
+CREATE TABLE roles_tbl(
+    id TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+CREATE TABLE ownercashier(
+id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+cashierId INT UNSIGNED,
+ownerId INT UNSIGNED
+);
+
+CREATE TABLE cashierstore_tbl(
+id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+cashierId INT UNSIGNED,
+storeId INT UNSIGNED
+);
+
+CREATE TABLE expences_tbl(
+id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+description TEXT,
+quantity DOUBLE,
+price DECIMAL(10,2),
+total DECIMAL(10,2),
+storeId INT UNSIGNED,
+userId INT UNSIGNED
+);
+
+CREATE TABLE subscriptions_tbl(
+id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+startDate DATE,
+endDate DATE,
+amountPaid DECIMAL(10,2),
+storeId TINYINT UNSIGNED
+);
